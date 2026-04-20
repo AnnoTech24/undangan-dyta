@@ -1,0 +1,503 @@
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — Firmansyach & Dyta
+   Emergency UI/UX CSS Framework
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --blue-bold:  #1E3F20; 
+  --blue-light: #DCE5DF;
+  --story-blue: #1E3F20; 
+  --gold:       #E8C340;
+  --bg-tint:    #FCF8E8; 
+  --white:      #ffffff;
+  --text:       #1A1A1A;
+  --text-light: rgba(26, 26, 26, 0.8);
+  --text-grey:  rgba(26, 26, 26, 0.6); 
+
+  --font-script: 'Alex Brush', cursive;
+  --font-bold:   'Montserrat', sans-serif;
+  --font-body:   'Montserrat', sans-serif;
+
+  --max-w: 480px; 
+  --ease:  cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ── Reset ── */
+*,*::before,*::after {margin:0;padding:0;box-sizing:border-box}
+html {font-size:14.4px;scroll-behavior:smooth} 
+
+/* Desktop Responsive Base */
+body {
+  font-family:var(--font-body);
+  color:var(--text);
+  /* Menambahkan latar belakang estetis tipis untuk tampilan Monitor PC / Lebar */
+  background-color: #f0f4f2;
+  background-image: radial-gradient(rgba(55, 151, 119, 0.08) 2px, transparent 2px);
+  background-size: 24px 24px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  margin: 0; padding: 0;
+  display: flex;
+  justify-content: center;
+}
+img {max-width:100%;height:auto;display:block;margin:0;padding:0;}
+section {margin:0; padding:0; display:block; position:relative; width: 100%;}
+
+/* Pembungkus Sentral Spesifik Mobile-First di Layar Desktop */
+.app-container {
+  width: 100%;
+  max-width: var(--max-w);
+  background: var(--white);
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0,0,0,0.15); /* Bayangan jatuh di PC */
+}
+
+/* ═══════════════════════════════════════
+   SVG TORN EDGES
+   ═══════════════════════════════════════ */
+.torn-edge {
+  position: absolute;
+  top: -38px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+  font-size: 0; 
+  line-height: 0;
+}
+.torn-edge svg {
+  display: block; width: 100%; height: 100%; margin: 0; padding: 0;
+  filter: drop-shadow(0px -3px 3px rgba(0,0,0,0.08));
+}
+.torn-edge-img-overlap {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; z-index: 10; font-size: 0; line-height: 0; transform: translateY(2px);
+}
+.torn-edge-img-overlap svg { display: block; width: 100%; height: 100%; margin: 0; padding: 0; }
+
+/* ═══════════════════════════════════════
+   COVER (TERPUSAT DI CONTAINER)
+   ═══════════════════════════════════════ */
+.cover {
+  position:fixed;
+  inset:0;
+  margin: 0 auto; /* Tengah di layar lebar */
+  max-width: var(--max-w); /* Selebar Container */
+  z-index:1000;
+  background: linear-gradient(rgba(30, 63, 32, 0.7), rgba(30, 63, 32, 0.85)), url('../assets/gallery/photo-2.jpeg') center/cover;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden; /* Prevent scrolling on cover */
+  transition:transform .9s var(--ease),opacity .9s var(--ease);
+}
+.cover.open {transform:translateY(-100%)}
+.cover.gone {display:none}
+
+.cover__petals{position:absolute;inset:0;pointer-events:none;z-index:1}
+/* Firefly effect for cover */
+.firefly {
+  position: absolute; border-radius: 50%; background: var(--gold); opacity: 0;
+  animation: floatFly ease-in-out infinite; box-shadow: 0 0 6px 1px rgba(232, 195, 64, 0.6);
+}
+.f1 { width: 5px; height: 5px; left: 10%; animation-duration: 8s; animation-delay: 1s; }
+.f2 { width: 3px; height: 3px; left: 25%; animation-duration: 10s; animation-delay: 4s; }
+.f3 { width: 6px; height: 6px; left: 40%; animation-duration: 7s; animation-delay: 0s; }
+.f4 { width: 4px; height: 4px; left: 60%; animation-duration: 11s; animation-delay: 3s; }
+.f5 { width: 5px; height: 5px; left: 75%; animation-duration: 9s; animation-delay: 2s; }
+.f6 { width: 3px; height: 3px; left: 90%; animation-duration: 12s; animation-delay: 5s; }
+.f7 { width: 4px; height: 4px; left: 50%; animation-duration: 8.5s; animation-delay: 0.5s; }
+.f8 { width: 6px; height: 6px; left: 80%; animation-duration: 11.5s; animation-delay: 1.5s; }
+@keyframes floatFly {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+}
+
+.cover__body {
+  text-align:center;width:100%;max-width:400px;
+  padding:15px 25px; /* Reduced padding */
+  position:relative;z-index:20;
+  animation:riseIn 1s var(--ease) forwards;
+}
+.guest-box {
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
+    padding: 15px 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3);
+    margin: 20px auto 30px;
+    display: inline-block;
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleUp{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+
+.cover__pre {font-family:var(--font-script);font-size:1.8rem;color:var(--text-light);margin-bottom:10px;}
+
+.cover__frame {
+  width: 280px; /* Widened */
+  height: 280px; /* Adjusted */
+  margin:0 auto 15px;
+  border-radius: 140px 140px 15px 15px; /* Adjusted to match half width */
+  overflow:hidden;
+  border:4px solid var(--white);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  font-size: 0; line-height: 0;
+  background: var(--white);
+}
+.cover__img {width:100%;height:100%;object-fit:cover;object-position:10% top;display:block;}
+.cover__names {
+  font-family:var(--font-script);
+  font-size:3.2rem; /* Reduced from 3.8rem */
+  color:var(--blue-bold);
+  line-height:1;
+  margin-bottom:10px; /* Reduced */
+  text-align: center;
+}
+.amp-script {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.5em; 
+  color: var(--secondary); /* Matches gold/yellow */
+  margin: -5px auto; /* Pulls names very tight vertically */
+}
+.cover__guest {margin-bottom:30px}
+.cover__kpd {font-family:var(--font-script);font-size:1.8rem;line-height:1.5;color:var(--text-light)}
+.cover__tamu {font-family:var(--font-bold);font-size:1.4rem;color:var(--blue-bold);margin-top:5px;text-transform:uppercase;letter-spacing:1px}
+
+/* Buttons */
+.btn {
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 30px;border:none;border-radius:5px;
+  color:var(--white);font-family:var(--font-bold);font-size:1rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.btn:hover {transform:translateY(-2px)}
+.btn--open {
+  background:var(--blue-bold);
+  border-radius:30px;
+  box-shadow:0 8px 25px rgba(55, 151, 119, 0.4);
+}
+.btn--blue {width:100%; background:var(--blue-bold);}
+.btn--map {
+  display:flex; width:100%; background:transparent;
+  border:2px solid var(--blue-bold); color:var(--blue-bold); text-decoration:none;
+}
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════ */
+.main {opacity:1;transition:opacity .5s ease}
+.main.hidden {opacity:0;pointer-events:none}
+/* We no longer need .wrapper strictly max-width handling because .app-container does it */
+.wrapper {width:100%;overflow:hidden;} 
+
+.inner {padding:40px 25px;position:relative;display:block;width:100%;}
+.pb-0 {padding-bottom:0}
+.pb-sm {padding-bottom:20px}
+.pb-md {padding-bottom:40px}
+.pb-lg {padding-bottom:60px}
+.pb-xl {padding-bottom:85px} 
+.pt-0 {padding-top:0}
+.pt-sm {padding-top:20px}
+.mt-md {margin-top:20px}
+.mt-lg {margin-top:35px}
+.bg-tint {background:linear-gradient(180deg, var(--bg-tint) 0%, #eef3f1 100%);}
+.bg-white {background:linear-gradient(180deg, var(--white) 0%, #f7faf9 100%);}
+
+.section-title {
+  font-family:var(--font-bold);font-weight:800;font-size:1.4rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--text);margin-bottom:20px;text-align:center;
+}
+.section-title--blue {color:var(--blue-bold)}
+
+.script-text {font-family:var(--font-script);line-height:1.6;padding-bottom:10px;font-weight:400;}
+
+/* ═══════════════════════════════════════
+   CARD STYLE (Adaptasi dari Referensi)
+   ═══════════════════════════════════════ */
+.card-style {
+  background: var(--white);
+  border: 1.5px solid var(--blue-bold);
+  border-radius: 12px;
+  padding: 40px 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+  margin: 30px 20px; /* Margin horizontal agar tidak mepet */
+}
+.card-style::before {
+  content: ''; position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(55, 151, 119, 0.4);
+  border-radius: 8px; pointer-events: none;
+}
+
+.card-style .corner {
+    position: absolute; width: 25px; height: 25px; 
+    border: 2px solid var(--blue-bold); 
+    border-radius: 50%;
+    animation: gentlePulse 4s infinite alternate;
+}
+.card-style .tl { top: -12.5px; left: -12.5px; border-bottom: none; border-right: none; }
+.card-style .tr { top: -12.5px; right: -12.5px; border-bottom: none; border-left: none; }
+.card-style .bl { bottom: -12.5px; left: -12.5px; border-top: none; border-right: none; }
+.card-style .br { bottom: -12.5px; right: -12.5px; border-top: none; border-left: none; }
+
+/* ── New Subtle Elegant Animations ── */
+@keyframes subtleFloat {
+    0% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    50% { transform: translateY(-8px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
+    100% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+}
+
+@keyframes gentlePulse {
+    from { transform: scale(1); opacity: 0.8; }
+    to { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes slowFadeFloat {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.05; }
+    50% { transform: translate(-50%, -52%) scale(1.02); opacity: 0.08; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.05; }
+}
+
+.bg-monogram {
+    position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--font-script); font-size: 25rem; color: var(--blue-bold); opacity: 0.05;
+    line-height: 0.7; z-index: 0; pointer-events: none; white-space: nowrap; text-align: center;
+    animation: slowFadeFloat 8s ease-in-out infinite;
+} 
+.hero__photo {width:100%;height:auto;object-fit:cover;display:block;margin:0;padding:0;}
+.daisy-deco {width:100%; display:flex; justify-content:center; padding:20px 0;}
+.daisy-deco svg { width:60px; height:60px; opacity:0.8; }
+
+.couple-section {background:var(--white); text-align:center;}
+.couple__greeting {font-size:2.8rem; color:var(--blue-bold); margin-bottom:10px;}
+.couple__intro {font-size:1rem;color:var(--text-grey);line-height:1.6;max-width:400px;margin:0 auto 30px}
+.couple__card {text-align:center; margin-bottom: 20px;}
+.couple__name {font-size:3.5rem; color:var(--blue-bold); margin-bottom:0px;}
+.couple__parent {font-size:.9rem;color:var(--text-light);line-height:1.5;text-transform:uppercase;letter-spacing:1px;max-width:350px;margin:0 auto;}
+.couple__amp-container {text-align:center; margin:10px 0;}
+
+.events-section {background:var(--bg-tint); text-align:center;}
+.date-feature {display:flex;align-items:center;justify-content:center;gap:15px;margin:25px auto 30px;}
+.date-feature__side {display:flex;flex-direction:column;align-items:center;gap:3px;}
+.date-feature__line {width:40px;height:2px;background:var(--blue-bold);}
+.date-feature__text {font-family:var(--font-bold); font-weight:800; font-size:.9rem; color:var(--blue-bold); letter-spacing:3px;}
+.date-feature__big {font-family:var(--font-bold); font-size:4.5rem; font-weight:800; color:var(--blue-bold); line-height:0.8;}
+
+.cd-grid {display:flex;justify-content:center;gap:10px;margin-bottom:30px;}
+.cd-cell {background:var(--blue-light); border-radius:8px;padding:15px 10px;min-width:70px;color:var(--blue-bold); text-align:center;}
+.cd-cell__num {display:block;font-family:var(--font-bold);font-size:1.8rem;font-weight:800;line-height:1;}
+.cd-cell__lbl {display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-top:5px;font-weight:700}
+
+.ev-card {margin-bottom:40px;}
+.ev-card__title {font-family:var(--font-bold); font-weight:800; font-size:1.5rem; color:var(--blue-bold); letter-spacing:2px; margin-bottom:15px;}
+.ev-card__loc {font-family:var(--font-bold);font-size:.9rem;color:var(--blue-bold);line-height:1.5;}
+
+.story-section {background:var(--story-blue); width: 100%;}
+.story__title {font-size: 4rem; color: var(--white); text-align: center; margin-top: 20px; margin-bottom: 30px;}
+.story__body {font-size:.95rem; color:var(--white); line-height:1.8; text-align:center; margin-bottom:20px;}
+.story__subtitle {font-size:3.5rem; color:var(--white); text-align:center;}
+
+.gallery-section {background:var(--white); text-align:center;}
+.gallery-title-wrapper {width: 100%; display: block; text-align: center; padding: 30px 20px 20px;}
+.gallery-title {font-size: 4rem; color: var(--blue-bold); margin: 0;}
+.gallery-masonry {column-count: 2; column-gap: 15px; padding: 0 25px 25px; margin: 0;}
+.gallery-item {break-inside: avoid; margin-bottom: 15px; font-size: 0; line-height: 0; display: block; width: 100%;}
+.gallery-item img {width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block;}
+
+/* Carousel style */
+.carousel-wrapper {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 40px 20px; gap: 20px;
+    scrollbar-width: none; 
+    cursor: grab; align-items: center;
+}
+.carousel-wrapper:active { cursor: grabbing; }
+.carousel-wrapper::-webkit-scrollbar { display: none; } 
+.carousel-wrapper img {
+    width: 75%; height: 350px; object-fit: cover; border-radius: 8px;
+    scroll-snap-align: center; flex-shrink: 0; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 8px solid var(--white); /* Minimalist elegant frame */
+    
+    /* Center highlight effect baseline */
+    opacity: 0.4;
+    transform: scale(0.85);
+    transition: all 0.6s var(--ease);
+}
+.carousel-wrapper img.focus {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.rsvp-gift-wrap {background:var(--bg-tint);}
+.rsvp-form {max-width:400px;margin:0 auto;text-align:left;}
+.field {
+  width:100%;border:none;background:var(--blue-light);border-radius:5px;padding:15px 20px;
+  font-family:var(--font-body);font-size:1rem;color:var(--text);margin-bottom:12px;
+  outline:none;border:1px solid transparent;transition:all .3s ease;
+}
+.field::placeholder {color:#a0aab8}
+.field:focus {border-color:var(--blue-bold);background:var(--white)}
+.field--ta {resize:none}
+select.field {
+  cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23379777'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 20px center;padding-right:45px;
+}
+
+.footer {background:var(--white);text-align:center;}
+.footer__thx {font-size:3rem;color:var(--text-grey); margin-top:20px;}
+.footer__names {font-size:4.5rem;color:var(--blue-bold);margin:0;}
+.footer__cp {font-family:var(--font-bold);font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--blue-light)}
+
+/* Scroll animation base */
+.anim { opacity:0; transition:all 1s var(--ease); }
+.anim.show { opacity:1; transform:none !important; }
+.anim.show.fade-half { opacity:0.35 !important; }
+
+/* Animation Variations */
+[data-anim="fadeUp"] { transform: translateY(40px); }
+[data-anim="zoomIn"] { transform: scale(0.85); }
+[data-anim="slideRight"] { transform: translateX(-40px); }
+[data-anim="slideLeft"] { transform: translateX(40px); }
+
+/* ═══════════════════════════════════════
+   ORNAMEN DEKORASI VISUAL KELAS ATAS
+   ═══════════════════════════════════════ */
+/* 1. Monogram Raksasa Latar Belakang */
+.bg-monogram {
+  position: absolute;
+  top: 15%; right: -25%;
+  font-family: var(--font-script);
+  font-size: 380px;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 2. Bintang Kilauan */
+.sparkle {
+  position: absolute;
+  color: var(--white);
+  font-size: 1.2rem;
+  opacity: 0.4;
+  animation: pulse-glow 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.1; transform: scale(0.6); }
+  50% { opacity: 0.7; transform: scale(1.1); text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+}
+
+/* 3. Daun Botani (Sudut) */
+.deco-leaves {
+  position: absolute;
+  width: 120px; height: 180px;
+  color: var(--gold);
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+}
+.deco-leaves--top-right { top: -10px; right: -20px; transform: rotate(15deg); }
+.deco-leaves--bot-left { bottom: 0px; left: -20px; transform: rotate(-165deg); }
+
+/* Bunga/Tangkai Floral di samping website */
+.floral-stem {
+  position: absolute;
+  width: 130px; height: auto;
+  color: var(--dark-green);
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+}
+.floral-stem--left { left: -30px; }
+.floral-stem--right { right: -30px; transform: scaleX(-1); }
+
+/* 4. Cap Lilin Kuno (Wax Seal) */
+.wax-seal {
+  position: absolute;
+  bottom: -20px; left: -20px;
+  width: 75px; height: 75px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F4CE14 0%, #c4a100 100%);
+  color: #ffffff; 
+  font-family: var(--font-script);
+  font-size: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.5);
+  border: 1.5px solid #a68800;
+  transform: rotate(-10deg);
+  z-index: 10;
+  padding: 0; margin: 0; line-height: 0; font-weight: 500;
+}
+
+/* 5. Music Button (Posisi Tertahan dalam 600px) */
+.music-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 15px;
+  width: 45px; height: 45px;
+  border-radius: 50%;
+  background: var(--blue-bold);
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  z-index: 999;
+  outline: none;
+  transition: transform 0.3s var(--ease);
+}
+.music-btn:hover { transform: scale(1.1); }
+.spinning { animation: diskSpin 4s linear infinite; }
+@keyframes diskSpin { 100% { transform: rotate(360deg); } }
+
+/* Menghilangkan tumpukan Musik di luar sisi kanan pada monitor Lebar */
+@media(min-width: 650px) {
+  .music-btn {
+    left: 50%;
+    margin-left: 250px; 
+    right: auto;
+  }
+}
+
+/* ═══════════════════════════════════════
+   Mobile Resizing
+   ═══════════════════════════════════════ */
+@media(max-width:480px){
+  html{font-size:12.6px;}
+  .cover__names {font-size:2.8rem}
+  .couple__greeting {font-size:2.4rem}
+  .couple__name {font-size:3rem}
+  .story__title {font-size:3.5rem}
+  .cover__frame {width: 240px; height: 240px; border-radius: 120px 120px 15px 15px;}
+}
+
+/* Height constraints prevents elements clashing on very short screens/keyboards popup */
+@media(max-height:800px){
+  .cover__body { padding: 10px 15px; }
+  .cover__frame { width: 240px; height: 240px; margin-bottom: 10px; border-radius: 120px 120px 15px 15px; }
+  .cover__names { font-size: 2.8rem; margin-bottom: 5px; }
+  .cover__pre { font-size: 1.5rem; margin-bottom: 5px; }
+  .cover__guest { margin-bottom: 15px; }
+}
+
+@media(max-height:650px){
+  .cover__frame { width: 200px; height: 200px; border-radius: 100px 100px 15px 15px; border-width: 3px; margin-bottom: 10px; }
+  .cover__names { font-size: 2.2rem; margin-bottom: 10px; }
+  .cover__kpd { font-size: 1.3rem !important; }
+  .cover__tamu { font-size: 1rem; }
+  .btn--open { padding: 10px 20px; font-size: 0.8rem; }
+}

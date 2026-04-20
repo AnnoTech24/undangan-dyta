@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan — Firmansyach & Dyta</title>
+    <meta name="description" content="Undangan pernikahan Firmansyach Maulana Hariyono & Dyta Fernanda Wahyudi. Minggu, 17 Mei 2026.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- SAMPUL PEMBUKA (COVER)                     -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="cover" class="cover">
+        <div class="cover__petals">
+            <div class="firefly f1"></div>
+            <div class="firefly f2"></div>
+            <div class="firefly f3"></div>
+            <div class="firefly f4"></div>
+            <div class="firefly f5"></div>
+            <div class="firefly f6"></div>
+            <div class="firefly f7"></div>
+            <div class="firefly f8"></div>
+        </div>
+
+        <div class="cover__body" style="animation: none;">
+            <p class="cover__pre script-text" style="color:var(--white); animation: fadeDown 1.5s var(--ease) 0.2s both;">The Wedding Of</p>
+            <h1 class="cover__names script-text" style="color:var(--white); font-size: 4.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.3); animation: scaleUp 1.5s var(--ease) 0.5s both;">
+                Firmansyach
+                <span class="amp-script" style="color:var(--white); font-family:'Playfair Display', serif; font-style: italic;">&amp;</span>
+                Dyta
+            </h1>
+            <div class="guest-box" style="animation: riseIn 1.5s var(--ease) 0.8s both;">
+                <p style="color:var(--white); font-size:1.2rem; font-family:var(--font-script);">Kepada Yth.</p>
+                <h3 id="nama-tamu-cover" style="color:var(--gold); font-family:var(--font-bold); font-size:1.4rem; text-transform:uppercase; margin-top:5px;">Tamu Spesial</h3>
+            </div>
+            <button id="btnOpen" class="btn btn--open" style="background:var(--gold); color:var(--text); animation: riseIn 1.5s var(--ease) 1s both;" aria-label="Buka Undangan">
+                BUKA UNDANGAN
+            </button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- KONTEN UTAMA                               -->
+    <!-- ══════════════════════════════════════════ -->
+    <main id="mainContent" class="main hidden">
+        <div class="wrapper">
+
+            <!-- ── SECTION 1: PEMBUKA ── -->
+            <section id="section-1" class="bg-white" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative;">
+                
+                <!-- DECOR: FLORAL STEM LEFT -->
+                <div class="floral-stem floral-stem--left fade-half anim" data-anim="slideRight" style="top: 15%; width: 140px;">
+                    <svg viewBox="0 0 100 250" fill="none" stroke="currentColor">
+                      <path d="M50,250 C40,200 70,150 50,100 C30,50 60,10 50,0" stroke-width="1.5"/>
+                      <path d="M50,200 C30,200 10,180 20,170 C30,170 45,185 50,200 Z" fill="currentColor"/>
+                      <path d="M55,160 C75,150 85,130 75,120 C65,120 55,140 55,160 Z" fill="currentColor"/>
+                      <path d="M47,110 C25,105 10,80 20,70 C35,70 45,90 47,110 Z" fill="currentColor"/>
+                      <circle cx="50" cy="0" r="3" fill="currentColor"/>
+                      <circle cx="70" cy="180" r="1.5" fill="currentColor"/>
+                      <circle cx="30" cy="130" r="1.5" fill="currentColor"/>
+                      <circle cx="65" cy="80" r="2" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- DECOR: FLORAL STEM RIGHT -->
+                <div class="floral-stem floral-stem--right fade-half anim" data-anim="slideLeft" style="bottom: 10%; width: 150px; color: var(--gold);">
+                    <svg viewBox="0 0 100 250" fill="none" stroke="currentColor">
+                      <path d="M60,250 C40,190 70,120 50,70 C30,20 60,10 50,0" stroke-width="1.5"/>
+                      <path d="M50,190 C30,190 15,170 25,160 C35,160 45,175 50,190 Z" fill="currentColor"/>
+                      <path d="M60,140 C80,130 90,110 80,100 C70,100 55,120 60,140 Z" fill="currentColor"/>
+                      <path d="M45,90 C25,85 10,60 20,50 C35,50 40,70 45,90 Z" fill="currentColor"/>
+                      <circle cx="55" cy="5" r="3" fill="currentColor"/>
+                      <circle cx="75" cy="160" r="1.5" fill="currentColor"/>
+                      <circle cx="25" cy="110" r="2" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="inner pt-xl pb-md" style="text-align: center;">
+                    
+                    <div class="anim" data-anim="zoomIn" style="width:160px; height:180px; margin: 20px auto 50px; border-radius: 80px 80px 10px 10px; overflow:hidden; border: 4px solid var(--blue-bold); padding: 5px; background:var(--white); animation: subtleFloat 6s ease-in-out infinite;">
+                         <img src="assets/images/main-img.jpeg" style="width:100%; height:100%; border-radius: 75px 75px 6px 6px; object-fit:cover; object-position:30% top;">
+                    </div>
+
+                    <p class="anim" data-anim="fadeUp" style="font-size: 0.75rem; letter-spacing: 3px; color: var(--blue-bold); text-transform: uppercase; margin-bottom: 40px; line-height: 1.8; font-weight: 600;">
+                        You are invited<br>to share in the wedding of
+                    </p>
+                    
+                    <h2 class="script-text anim" data-anim="slideRight" style="font-size:3rem; color:var(--blue-bold); margin-bottom:0px; line-height:1.2;">Firmansyach Maulana H.</h2>
+                    <span class="anim" data-anim="zoomIn" style="font-family:'Playfair Display', 'Baskerville', serif; font-size:2.5rem; color:var(--blue-bold); display:block; margin: 20px 0; font-weight:700; font-style: italic;">&amp;</span>
+                    <h2 class="script-text anim" data-anim="slideLeft" style="font-size:3rem; color:var(--blue-bold); margin-bottom:40px; line-height:1.2;">Dyta Fernanda W.</h2>
+                    
+                    <div class="anim" data-anim="fadeUp" style="width:40px; height:2px; background:var(--blue-light); margin: 50px auto 20px;"></div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 2: SALAM & PROFIL ── -->
+            <section id="section-2" class="couple-section bg-white">
+                
+                <!-- DECOR: BOTANICAL LEAF TOP RIGHT -->
+                <div class="deco-leaves deco-leaves--top-right fade-half anim" data-anim="fadeUp">
+                    <svg viewBox="0 0 100 150" fill="none" stroke="currentColor">
+                        <path d="M50,150 Q40,80 80,10" stroke-width="1.5" />
+                        <path d="M75,25 Q55,20 60,40 Q80,45 75,25 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M63,55 Q40,50 48,70 Q70,75 63,55 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M53,90 Q30,85 40,105 Q65,110 53,90 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M47,125 Q25,120 35,140 Q60,145 47,125 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M80,10 Q95,20 85,35 Q65,25 80,10 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M70,40 Q90,55 75,70 Q55,55 70,40 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M58,75 Q85,95 65,110 Q45,90 58,75 Z" stroke-width="1" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="inner pt-0 pb-xl">
+                  <div class="card-style">
+                    <div class="corner tl"></div><div class="corner tr"></div>
+                    <div class="corner bl"></div><div class="corner br"></div>
+                    <p class="anim" data-anim="fadeUp" style="text-align: center; margin-bottom: 15px;">
+                        <span style="font-family: 'Amiri', serif; font-size: 2.2rem; color: var(--blue-bold); display: block; margin-bottom: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.05);">ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ</span>
+                    </p>
+                    <p class="anim" data-anim="fadeUp" style="text-align: center; font-size: 0.9rem; line-height: 1.6; color: var(--text); max-width: 80%; margin: 0 auto; transition-delay: 0.1s;">
+                        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami:
+                    </p>
+
+                    <div class="couple__card anim" data-anim="slideRight">
+                        <h2 class="couple__name script-text" style="font-size:2.8rem; line-height:1.2;">Firmansyach Maulana Hariyono</h2>
+                        <p class="couple__parent">Putra dari Bpk. Rudy Hariyono &amp; Ibu Wiwik Widyawati</p>
+                    </div>
+
+                    <div class="couple__amp-container anim" data-anim="zoomIn">
+                        <span class="amp-script" style="font-family:'Playfair Display', 'Baskerville', 'Times New Roman', serif; font-size:3.5rem; font-weight:700; color:var(--blue-bold); font-style: italic;">&amp;</span>
+                    </div>
+
+                    <div class="couple__card anim" data-anim="slideLeft">
+                        <h2 class="couple__name script-text" style="font-size:2.8rem; line-height:1.2;">Dyta Fernanda Wahyudi</h2>
+                        <p class="couple__parent">Putri dari Bpk. Endik Wahyudi &amp; Ibu Mulistyani</p>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 3: WAKTU & LOKASI ── -->
+            <section id="section-3" class="events-section bg-tint">
+                <div class="torn-edge">
+                    <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                        <path d="M0,40 L0,15 C15,5 25,25 40,18 L45,18 Q55,25 65,15 L80,12 C95,20 100,5 115,15 L125,28 Q140,20 155,22 C170,12 180,30 195,25 L210,10 L225,18 Q235,25 250,15 L260,20 C275,30 285,8 300,15 L320,22 L335,12 Q350,25 365,18 L380,25 C395,15 410,28 425,20 L445,12 L460,25 Q480,15 495,22 L510,10 C525,20 540,5 555,18 L570,28 L590,15 Q605,25 620,12 L640,20 L655,8 C670,18 690,25 705,15 L720,28 Q735,15 750,22 L765,12 C780,5 795,25 810,18 L830,28 L845,15 Q860,20 875,10 L890,22 L910,12 C930,25 945,8 960,18 L975,28 Q990,15 1000,22 L1000,40 Z" fill="#FCF8E8" stroke="none"/>
+                    </svg>
+                </div>
+                
+                <!-- DECOR: GIANT MONOGRAM WATERMARK -->
+                <div class="bg-monogram">F<br>&<br>D</div>
+
+                <!-- DECOR: FLORAL STEM BOTTOM LEFT -->
+                <div class="floral-stem floral-stem--left fade-half anim" data-anim="slideRight" style="top: 40%; width: 120px;">
+                    <svg viewBox="0 0 100 250" fill="none" stroke="currentColor">
+                      <path d="M50,250 C40,200 70,150 50,100 C30,50 60,10 50,0" stroke-width="1.5"/>
+                      <path d="M50,200 C30,200 10,180 20,170 C30,170 45,185 50,200 Z" fill="currentColor"/>
+                      <path d="M55,160 C75,150 85,130 75,120 C65,120 55,140 55,160 Z" fill="currentColor"/>
+                      <path d="M47,110 C25,105 10,80 20,70 C35,70 45,90 47,110 Z" fill="currentColor"/>
+                      <circle cx="50" cy="0" r="3" fill="currentColor"/>
+                      <circle cx="70" cy="180" r="1.5" fill="currentColor"/>
+                      <circle cx="30" cy="130" r="1.5" fill="currentColor"/>
+                      <circle cx="65" cy="80" r="2" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="inner pt-sm pb-xl">
+                  <div class="card-style anim" data-anim="fadeUp" style="margin-top: 50px;">
+                    <div class="corner tl"></div><div class="corner tr"></div>
+                    <div class="corner bl"></div><div class="corner br"></div>
+                    <div class="date-feature">
+                        <div class="date-feature__side">
+                            <div class="date-feature__line"></div>
+                            <span class="date-feature__text">MINGGU</span>
+                            <div class="date-feature__line"></div>
+                        </div>
+                        <span class="date-feature__big">17</span>
+                        <div class="date-feature__side">
+                            <div class="date-feature__line"></div>
+                            <span class="date-feature__text">MEI 2026</span>
+                            <div class="date-feature__line"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="ev-card">
+                        <h3 class="ev-card__title">AKAD NIKAH</h3>
+                        <p class="ev-card__loc">Pukul 09.00 - 10.00 WIB<br>Ayam Bakar Prima Rasa, Kupang Indah</p>
+                    </div>
+
+                    <div class="ev-card">
+                        <h3 class="ev-card__title">RESEPSI</h3>
+                        <p class="ev-card__loc">Pukul 10.00 - 12.00 WIB<br>Ayam Bakar Prima Rasa, Kupang Indah</p>
+                    </div>
+
+                    <div class="cd-grid mt-lg">
+                        <div class="cd-cell"><span id="cdD" class="cd-cell__num">00</span><span class="cd-cell__lbl">Hari</span></div>
+                        <div class="cd-cell"><span id="cdH" class="cd-cell__num">00</span><span class="cd-cell__lbl">Jam</span></div>
+                        <div class="cd-cell"><span id="cdM" class="cd-cell__num">00</span><span class="cd-cell__lbl">Menit</span></div>
+                        <div class="cd-cell"><span id="cdS" class="cd-cell__num">00</span><span class="cd-cell__lbl">Detik</span></div>
+                    </div>
+
+                    <a href="#" class="btn btn--map mt-md">
+                        <i class="fa-solid fa-map-location-dot"></i> Buka Google Maps
+                    </a>
+                  </div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 4: PERJALANAN CINTA ── -->
+            <section id="section-4" class="story-section">
+                <div class="torn-edge">
+                    <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                        <path d="M0,40 L0,25 Q15,15 30,22 L45,10 C60,20 70,5 85,15 L105,28 Q120,20 135,25 L150,12 L170,22 C185,15 200,30 215,20 L230,10 Q245,20 260,15 L280,25 L295,12 C310,22 325,8 340,18 L355,28 Q375,15 390,22 L410,10 L430,25 C450,15 465,28 480,20 L495,12 Q515,25 530,15 L550,22 C565,10 585,30 600,20 L620,12 L640,25 Q655,15 675,22 L690,10 C710,25 725,12 740,20 L760,28 L780,15 Q795,25 810,18 L830,10 C845,22 865,5 880,15 L900,25 Q915,12 935,20 L955,28 C970,18 985,25 1000,15 L1000,40 Z" fill="#1E3F20" stroke="none"/>
+                    </svg>
+                </div>
+                
+                <!-- DECOR: PULSING SPARKLES -->
+                <span class="sparkle" style="top:15%; left:12%">✦</span>
+                <span class="sparkle" style="top:35%; right:15%; animation-delay:1.5s">✦</span>
+                <span class="sparkle" style="top:65%; left:25%; animation-delay:0.8s">✦</span>
+                <span class="sparkle" style="top:85%; right:22%; animation-delay:2.2s">✦</span>
+                <span class="sparkle" style="top:5%; left:50%; animation-delay:0.2s">✦</span>
+                <span class="sparkle" style="top:25%; left:80%; animation-delay:1s">✦</span>
+                <span class="sparkle" style="top:45%; right:45%; animation-delay:0.5s">✦</span>
+                <span class="sparkle" style="top:55%; left:10%; animation-delay:1.8s">✦</span>
+                <span class="sparkle" style="top:75%; right:10%; animation-delay:0.3s">✦</span>
+                <span class="sparkle" style="top:90%; left:40%; animation-delay:2s">✦</span>
+
+                <div class="inner pt-sm pb-xl anim" data-anim="fadeUp">
+                    <h2 class="story__title script-text">Kisah Kami</h2>
+                    
+                    <!-- DECOR: WAX SEAL WRAPPER -->
+                    <div style="position:relative; display:inline-block; margin-bottom: 25px;">
+                        <img src="assets/gallery/photo-1.jpeg" alt="Kisah Kami" class="hero__photo" style="border-radius:10px; margin:0;">
+                        <div class="wax-seal">FD</div>
+                    </div>
+                    
+                    <p class="story__body">
+                        Kami adalah dua insan yang sebelumnya tidak saling mengenal, melalui jalan yang dipertemukan oleh kebaikan seseorang, kami bertemu bukan hanya untuk berkenalan, tapi untuk saling menemukan. Setelah kami berbincang, ternyata kisah kami sama persis. Dulu, cara pandang kami tentang cinta adalah keruh, rasa takut akan kegagalan melekat di benak kami. Seiring berjalannya waktu, kami punya harapan pada kisah ini, saling memahami, saling menopang, saling percaya. Langkah kami selanjutnya adalah awal dari keberanian kami untuk melawan rasa takut yang pernah ada. Bahagia akan selalu kami usahakan. Semoga doa dan harapan baik kami kepada Allah SWT selalu menjadi tameng untuk perjalanan kami seterusnya.
+                    </p>
+                    
+                    <h2 class="story__subtitle script-text">Selamanya</h2>
+                </div>
+            </section>
+
+            <!-- ── SECTION 5: GALERI ── -->
+            <section id="section-5" class="gallery-section bg-white">
+                <div class="torn-edge">
+                    <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                        <path d="M0,40 L0,18 C15,28 25,10 40,20 L55,12 Q75,22 90,15 L110,25 C125,15 140,28 155,18 L170,10 L190,22 Q210,15 225,25 L245,12 C265,22 280,10 300,18 L315,28 Q335,15 350,22 L370,10 L390,25 C410,15 425,30 440,20 L455,12 Q475,25 490,15 L510,22 C525,10 545,25 560,15 L580,28 L600,12 Q615,22 635,15 L655,25 C675,12 690,30 705,20 L720,10 Q740,25 760,15 L780,22 C800,10 815,28 830,18 L850,12 Q870,25 885,15 L905,22 C925,10 940,25 960,18 L980,28 Q990,15 1000,20 L1000,40 Z" fill="#ffffff" stroke="none"/>
+                    </svg>
+                </div>
+
+                <div class="gallery-title-wrapper anim" data-anim="fadeUp" style="padding-top: 30px; padding-bottom: 30px;">
+                    <h2 class="gallery-title script-text">Galeri</h2>
+                </div>
+
+                <div class="carousel-wrapper anim" data-anim="fadeUp">
+                    <img src="assets/gallery/photo-1.jpeg" alt="Galeri Mengenang">
+                    <img src="assets/gallery/photo-2.jpeg" alt="Galeri Pasangan">
+                    <img src="assets/gallery/photo-3.jpeg" alt="Galeri Lingkaran">
+                    <img src="assets/gallery/photo-4.jpeg" alt="Galeri Akhir">
+                </div>
+
+                <div style="height: 70px; width: 100%; display: block; position: relative; clear: both;"></div>
+            </section>
+
+            <!-- ── SECTION 6: BUKU TAMU ── -->
+            <section id="section-6" class="rsvp-gift-wrap bg-tint">
+                <div class="torn-edge">
+                    <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                        <path d="M0,40 L0,20 Q20,10 35,22 L50,15 C65,28 80,10 95,20 L115,12 L135,25 Q150,15 170,22 C185,10 205,28 220,18 L240,12 Q260,25 275,15 L295,22 L315,10 C335,25 350,12 365,20 L380,28 Q400,15 415,22 L435,12 C450,28 470,10 485,20 L505,25 Q520,15 540,22 L560,12 C580,25 595,10 610,18 L630,28 L650,15 Q670,25 685,18 L705,10 C725,22 745,8 760,18 L780,25 Q800,12 815,20 L835,15 L855,28 C870,15 890,25 905,18 L925,12 Q945,22 965,15 C980,25 990,10 1000,20 L1000,40 Z" fill="#FCF8E8" stroke="none"/>
+                    </svg>
+                </div>
+
+                <!-- DECOR: BOTANICAL LEAF BOTTOM LEFT -->
+                <div class="deco-leaves deco-leaves--bot-left">
+                    <svg viewBox="0 0 100 150" fill="none" stroke="currentColor">
+                        <path d="M50,150 Q40,80 80,10" stroke-width="1.5" />
+                        <path d="M75,25 Q55,20 60,40 Q80,45 75,25 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M63,55 Q40,50 48,70 Q70,75 63,55 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M53,90 Q30,85 40,105 Q65,110 53,90 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M47,125 Q25,120 35,140 Q60,145 47,125 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M80,10 Q95,20 85,35 Q65,25 80,10 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M70,40 Q90,55 75,70 Q55,55 70,40 Z" stroke-width="1" fill="currentColor"/>
+                        <path d="M58,75 Q85,95 65,110 Q45,90 58,75 Z" stroke-width="1" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="inner pt-sm pb-xl anim" data-anim="fadeUp">
+                  <div class="card-style">
+                    <div class="corner tl"></div><div class="corner tr"></div>
+                    <div class="corner bl"></div><div class="corner br"></div>
+                    <h2 class="section-title" style="padding-top:20px;">Konfirmasi Kehadiran</h2>
+                    <form class="rsvp-form" id="rsvpForm" style="margin-bottom: 40px;">
+                        <input type="text" placeholder="Nama Lengkap" class="field" required>
+                        <select class="field" required>
+                            <option value="" disabled selected>Kehadiran Anda</option>
+                            <option value="hadir">Hadir</option>
+                            <option value="tidak">Maaf, Tidak Bisa Hadir</option>
+                        </select>
+                        <input type="number" placeholder="Jumlah Tamu" class="field" min="1" max="5">
+                        <button type="submit" class="btn btn--blue"><i class="fa-solid fa-paper-plane"></i> Kirim RSVP</button>
+                    </form>
+
+                    <h2 class="section-title">Kirim Ucapan</h2>
+                    <form class="rsvp-form" id="wishForm">
+                        <input type="text" placeholder="Nama Anda" class="field" required>
+                        <textarea placeholder="Tulis ucapan dan doa terbaik untuk kedua mempelai..." class="field field--ta" rows="4" required></textarea>
+                        <button type="submit" class="btn btn--blue"><i class="fa-regular fa-comment-dots"></i> Kirim Ucapan</button>
+                    </form>
+                  </div>
+                </div>
+            </section>
+
+            <!-- ── SECTION 7: PENUTUP ── -->
+            <section id="section-7" class="footer bg-white anim" data-anim="fadeUp">
+                <div class="torn-edge">
+                    <svg viewBox="0 0 1000 40" preserveAspectRatio="none">
+                        <path d="M0,40 L0,15 C15,8 30,25 45,18 L65,28 Q80,15 100,22 L115,10 C130,25 150,12 165,20 L185,28 L205,15 Q225,25 240,18 L260,12 C280,25 295,10 310,20 L330,25 Q350,12 370,22 L390,15 L410,28 C430,18 445,10 460,22 L480,12 Q500,25 520,18 L540,10 C560,22 575,8 590,18 L610,28 Q630,15 650,22 L670,12 L690,25 C710,15 725,28 740,20 L760,10 Q780,22 800,15 L820,25 Q840,12 860,20 L880,28 C900,15 915,28 930,18 L950,12 Q970,25 985,15 Q995,10 1000,20 L1000,40 Z" fill="#ffffff" stroke="none"/>
+                    </svg>
+                </div>
+
+                <div class="inner overflow-hidden pt-0 pb-lg" style="padding-top: 50px;">
+                    <h2 class="footer__names script-text" style="line-height: 1.2; font-size: 3.5rem;">
+                        Firmansyach<br>
+                        <span style="font-family:'Playfair Display', 'Baskerville', serif; font-size: 2rem; color: var(--blue-bold); font-style: italic;">&amp;</span><br>
+                        Dyta
+                    </h2>
+                    <p class="footer__cp">Mempelai &amp; Keluarga Besar</p>
+                    <h2 class="footer__thx script-text" style="color:var(--blue-bold);">Terima Kasih</h2>
+                    <p style="margin-top: 50px; font-size: 0.8rem; letter-spacing: 2.5px; font-family:var(--font-bold); color: var(--text);">
+                        CREATED WITH <i class="fa-solid fa-leaf" style="color:var(--gold);"></i> BY ANNO.TECH
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- DECOR: MUSIC BUTTON & AUDIO -->
+    <button id="btnMusic" class="music-btn spinning" aria-label="Play Music">
+        <i class="fa-solid fa-music"></i>
+    </button>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="song/Nadin Amizah - Berpayung Tuhan.mp3" type="audio/mpeg">
+    </audio>
+
+</div> <!-- END APP CONTAINER -->
+
+    <script src="js/main.js"></script>
+</body>
+</html>
