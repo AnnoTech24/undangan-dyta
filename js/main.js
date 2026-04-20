@@ -9,6 +9,17 @@ const btnOpen = document.getElementById('btnOpen');
 const btnMusic = document.getElementById('btnMusic');
 const bgMusic = document.getElementById('bgMusic');
 
+// ── Dynamic Guest Name from URL ──
+const namaTamuCover = document.getElementById('nama-tamu-cover');
+const pathSegment = decodeURIComponent(window.location.pathname.split('/').filter(Boolean).pop() || '');
+if (pathSegment) {
+    // Replace dashes/underscores with spaces for nicer display
+    const namaFormatted = pathSegment.replace(/[-_]/g, ' ');
+    namaTamuCover.textContent = namaFormatted;
+} else {
+    namaTamuCover.textContent = 'Tamu Undangan';
+}
+
 let isMusicPlaying = false;
 
 btnOpen.addEventListener('click', () => {
