@@ -106,18 +106,85 @@ function salin(txt, btn) {
     });
 }
 
-// ── Form submissions ──
-document.getElementById('rsvpForm').addEventListener('submit', e => {
+// ── Comment/Wish System (Google Apps Script Backend) ──
+// GANTI URL DI BAWAH INI DENGAN URL WEB APP GOOGLE APPS SCRIPT KAMU
+const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+const wishList = document.getElementById('wishList');
+const wishLoading = document.getElementById('wishLoading');
+const wishForm = document.getElementById('wishForm');
+const wishSubmitBtn = document.getElementById('wishSubmitBtn');
+
+// Fetch and display all wishes
+function loadWishes() {
+    fetch(SCRIPT_URL)
+        .then(res => res.json())
+        .then(data => {
+            wishLoading.style.display = 'none';
+            if (!data || data.length === 0) {
+                wishList.innerHTML = '<p class="wish-empty">Belum ada ucapan. Jadilah yang pertama! 💌</p>';
+                return;
+            }
+            wishList.innerHTML = '';
+            // Show newest first
+            data.reverse().forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'wish-item';
+                div.innerHTML = `
+                    <div class="wish-item__name">${escapeHTML(item.nama)}</div>
+                    <p class="wish-item__msg">${escapeHTML(item.ucapan)}</p>
+                    <span class="wish-item__time">${item.waktu || ''}</span>
+                `;
+                wishList.appendChild(div);
+            });
+        })
+        .catch(() => {
+            wishLoading.innerHTML = '<span class="wish-empty">Gagal memuat ucapan.</span>';
+        });
+}
+
+// Escape HTML to prevent XSS
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// Submit wish
+wishForm.addEventListener('submit', e => {
     e.preventDefault();
-    alert('Konfirmasi kehadiran Anda telah diterima. Terima kasih!');
-    e.target.reset();
+    const nama = document.getElementById('wishName').value.trim();
+    const ucapan = document.getElementById('wishMessage').value.trim();
+    if (!nama || !ucapan) return;
+
+    wishSubmitBtn.disabled = true;
+    wishSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nama, ucapan })
+    }).then(() => {
+        wishForm.reset();
+        wishSubmitBtn.disabled = false;
+        wishSubmitBtn.innerHTML = '<i class="fa-regular fa-comment-dots"></i> Kirim Ucapan';
+        // Reload wishes after short delay (give script time to save)
+        setTimeout(loadWishes, 1500);
+        alert('Ucapan Anda telah terkirim. Terima kasih atas doa & harapannya! 💕');
+    }).catch(() => {
+        wishSubmitBtn.disabled = false;
+        wishSubmitBtn.innerHTML = '<i class="fa-regular fa-comment-dots"></i> Kirim Ucapan';
+        alert('Gagal mengirim ucapan. Silakan coba lagi.');
+    });
 });
 
-document.getElementById('wishForm').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Ucapan Anda telah terkirim. Terima kasih atas doa & harapannya! 💕');
-    e.target.reset();
-});
+// Load wishes on page load
+if (SCRIPT_URL !== 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+    loadWishes();
+} else {
+    wishLoading.innerHTML = '<span class="wish-empty">Sistem ucapan belum dikonfigurasi.</span>';
+}
 
 // ── Gallery Carousel: Drag to Scroll & Center Highlight ──
 const carousel = document.querySelector('.carousel-wrapper');

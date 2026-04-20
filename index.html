@@ -207,7 +207,7 @@
                         <div class="cd-cell"><span id="cdS" class="cd-cell__num">00</span><span class="cd-cell__lbl">Detik</span></div>
                     </div>
 
-                    <a href="#" class="btn btn--map mt-md">
+                    <a href="https://maps.app.goo.gl/SMFK8atW5FnBGey99" target="_blank" rel="noopener noreferrer" class="btn btn--map mt-md">
                         <i class="fa-solid fa-map-location-dot"></i> Buka Google Maps
                     </a>
                   </div>
@@ -299,24 +299,19 @@
                   <div class="card-style">
                     <div class="corner tl"></div><div class="corner tr"></div>
                     <div class="corner bl"></div><div class="corner br"></div>
-                    <h2 class="section-title" style="padding-top:20px;">Konfirmasi Kehadiran</h2>
-                    <form class="rsvp-form" id="rsvpForm" style="margin-bottom: 40px;">
-                        <input type="text" placeholder="Nama Lengkap" class="field" required>
-                        <select class="field" required>
-                            <option value="" disabled selected>Kehadiran Anda</option>
-                            <option value="hadir">Hadir</option>
-                            <option value="tidak">Maaf, Tidak Bisa Hadir</option>
-                        </select>
-                        <input type="number" placeholder="Jumlah Tamu" class="field" min="1" max="5">
-                        <button type="submit" class="btn btn--blue"><i class="fa-solid fa-paper-plane"></i> Kirim RSVP</button>
+                    <h2 class="section-title" style="padding-top:20px;">Kirim Ucapan</h2>
+                    <form class="rsvp-form" id="wishForm">
+                        <input type="text" id="wishName" placeholder="Nama Anda" class="field" required>
+                        <textarea id="wishMessage" placeholder="Tulis ucapan dan doa terbaik untuk kedua mempelai..." class="field field--ta" rows="4" required></textarea>
+                        <button type="submit" class="btn btn--blue" id="wishSubmitBtn"><i class="fa-regular fa-comment-dots"></i> Kirim Ucapan</button>
                     </form>
 
-                    <h2 class="section-title">Kirim Ucapan</h2>
-                    <form class="rsvp-form" id="wishForm">
-                        <input type="text" placeholder="Nama Anda" class="field" required>
-                        <textarea placeholder="Tulis ucapan dan doa terbaik untuk kedua mempelai..." class="field field--ta" rows="4" required></textarea>
-                        <button type="submit" class="btn btn--blue"><i class="fa-regular fa-comment-dots"></i> Kirim Ucapan</button>
-                    </form>
+                    <div style="width:40px; height:2px; background:var(--blue-light); margin: 30px auto;"></div>
+
+                    <h2 class="section-title">Ucapan &amp; Doa</h2>
+                    <div id="wishList" class="wish-list">
+                        <p class="wish-loading" id="wishLoading"><i class="fa-solid fa-spinner fa-spin"></i> Memuat ucapan...</p>
+                    </div>
                   </div>
                 </div>
             </section>

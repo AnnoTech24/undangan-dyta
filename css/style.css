@@ -336,6 +336,31 @@ section {margin:0; padding:0; display:block; position:relative; width: 100%;}
 
 .rsvp-gift-wrap {background:var(--bg-tint);}
 .rsvp-form {max-width:400px;margin:0 auto;text-align:left;}
+
+/* Wish/Comment List */
+.wish-list {
+  max-width: 400px; margin: 0 auto; max-height: 400px; overflow-y: auto;
+  padding-right: 5px;
+}
+.wish-list::-webkit-scrollbar { width: 4px; }
+.wish-list::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
+.wish-item {
+  background: var(--blue-light); border-radius: 10px; padding: 15px 18px;
+  margin-bottom: 12px; text-align: left; position: relative;
+  border-left: 3px solid var(--blue-bold);
+}
+.wish-item__name {
+  font-family: var(--font-bold); font-weight: 700; font-size: 0.9rem;
+  color: var(--blue-bold); margin-bottom: 4px;
+}
+.wish-item__msg {
+  font-size: 0.88rem; color: var(--text); line-height: 1.6; margin: 0;
+}
+.wish-item__time {
+  font-size: 0.7rem; color: var(--text-grey); margin-top: 6px; display: block;
+}
+.wish-loading { text-align: center; color: var(--text-grey); font-size: 0.9rem; }
+.wish-empty { text-align: center; color: var(--text-grey); font-size: 0.9rem; font-style: italic; }
 .field {
   width:100%;border:none;background:var(--blue-light);border-radius:5px;padding:15px 20px;
   font-family:var(--font-body);font-size:1rem;color:var(--text);margin-bottom:12px;
