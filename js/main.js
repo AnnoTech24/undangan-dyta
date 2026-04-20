@@ -129,8 +129,8 @@ function loadWishes() {
             
             const myName = localStorage.getItem('weddingWishName') || '';
 
-            // Show newest first
-            data.reverse().forEach(item => {
+            // Remove reverse() so newest is at the bottom
+            data.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'wish-item';
                 
@@ -146,6 +146,9 @@ function loadWishes() {
                 `;
                 wishList.appendChild(div);
             });
+
+            // Scroll to bottom automatically so the newest message is visible
+            wishList.scrollTop = wishList.scrollHeight;
         })
         .catch(() => {
             wishLoading.innerHTML = '<span class="wish-empty">Gagal memuat ucapan.</span>';
