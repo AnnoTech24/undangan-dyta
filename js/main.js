@@ -126,14 +126,23 @@ function loadWishes() {
                 return;
             }
             wishList.innerHTML = '';
+            
+            const myName = localStorage.getItem('weddingWishName') || '';
+
             // Show newest first
             data.reverse().forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'wish-item';
+                
+                // If it's our own message, make it appear on the right
+                if (myName && item.nama === myName) {
+                    div.classList.add('wish-item--self');
+                }
+
                 div.innerHTML = `
                     <div class="wish-item__name">${escapeHTML(item.nama)}</div>
                     <p class="wish-item__msg">${escapeHTML(item.ucapan)}</p>
-                    <span class="wish-item__time">${item.waktu || ''}</span>
+                    <span class="wish-item__time">${formatTanggal(item.waktu)}</span>
                 `;
                 wishList.appendChild(div);
             });
@@ -150,12 +159,27 @@ function escapeHTML(str) {
     return div.innerHTML;
 }
 
+// Format Tanggal (e.g. "20 April 2026")
+function formatTanggal(isoString) {
+    if (!isoString) return '';
+    const date = new Date(isoString);
+    if (isNaN(date)) return isoString;
+    return date.toLocaleDateString('id-ID', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+}
+
 // Submit wish
 wishForm.addEventListener('submit', e => {
     e.preventDefault();
     const nama = document.getElementById('wishName').value.trim();
     const ucapan = document.getElementById('wishMessage').value.trim();
     if (!nama || !ucapan) return;
+
+    // Save name to localStorage so we know which messages are ours
+    localStorage.setItem('weddingWishName', nama);
 
     wishSubmitBtn.disabled = true;
     wishSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
@@ -167,6 +191,9 @@ wishForm.addEventListener('submit', e => {
         body: JSON.stringify({ nama, ucapan })
     }).then(() => {
         wishForm.reset();
+        // Restore name from localStorage to the field so they don't have to retype it next time
+        document.getElementById('wishName').value = localStorage.getItem('weddingWishName') || '';
+        
         wishSubmitBtn.disabled = false;
         wishSubmitBtn.innerHTML = '<i class="fa-regular fa-comment-dots"></i> Kirim Ucapan';
         // Reload wishes after short delay (give script time to save)
@@ -182,6 +209,11 @@ wishForm.addEventListener('submit', e => {
 // Load wishes on page load
 if (SCRIPT_URL !== 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
     loadWishes();
+    // Pre-fill name if exists
+    const savedName = localStorage.getItem('weddingWishName');
+    if (savedName) {
+        document.getElementById('wishName').value = savedName;
+    }
 } else {
     wishLoading.innerHTML = '<span class="wish-empty">Sistem ucapan belum dikonfigurasi.</span>';
 }

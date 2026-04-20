@@ -340,27 +340,33 @@ section {margin:0; padding:0; display:block; position:relative; width: 100%;}
 /* Wish/Comment List */
 .wish-list {
   max-width: 400px; margin: 0 auto; max-height: 400px; overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 5px; display: flex; flex-direction: column; gap: 12px;
 }
 .wish-list::-webkit-scrollbar { width: 4px; }
 .wish-list::-webkit-scrollbar-thumb { background: var(--blue-light); border-radius: 4px; }
 .wish-item {
-  background: var(--blue-light); border-radius: 10px; padding: 15px 18px;
-  margin-bottom: 12px; text-align: left; position: relative;
-  border-left: 3px solid var(--blue-bold);
+  background: var(--blue-light); border-radius: 12px 12px 12px 0px; padding: 12px 16px;
+  text-align: left; position: relative; max-width: 85%; align-self: flex-start;
+}
+.wish-item--self {
+  background: var(--blue-bold); color: var(--white); border-radius: 12px 12px 0px 12px;
+  align-self: flex-end; text-align: right; margin-left: auto; border-left: none;
 }
 .wish-item__name {
-  font-family: var(--font-bold); font-weight: 700; font-size: 0.9rem;
+  font-family: var(--font-bold); font-weight: 700; font-size: 0.85rem;
   color: var(--blue-bold); margin-bottom: 4px;
 }
+.wish-item--self .wish-item__name { color: var(--gold); }
 .wish-item__msg {
-  font-size: 0.88rem; color: var(--text); line-height: 1.6; margin: 0;
+  font-size: 0.85rem; line-height: 1.5; margin: 0; color: inherit;
 }
+.wish-item--self .wish-item__msg { color: var(--white); }
 .wish-item__time {
-  font-size: 0.7rem; color: var(--text-grey); margin-top: 6px; display: block;
+  font-size: 0.65rem; color: var(--text-grey); margin-top: 6px; display: block;
 }
-.wish-loading { text-align: center; color: var(--text-grey); font-size: 0.9rem; }
-.wish-empty { text-align: center; color: var(--text-grey); font-size: 0.9rem; font-style: italic; }
+.wish-item--self .wish-item__time { color: rgba(255, 255, 255, 0.7); }
+.wish-loading { text-align: center; color: var(--text-grey); font-size: 0.9rem; align-self: center;}
+.wish-empty { text-align: center; color: var(--text-grey); font-size: 0.9rem; font-style: italic; align-self: center;}
 .field {
   width:100%;border:none;background:var(--blue-light);border-radius:5px;padding:15px 20px;
   font-family:var(--font-body);font-size:1rem;color:var(--text);margin-bottom:12px;
