@@ -108,7 +108,7 @@ function salin(txt, btn) {
 
 // ── Comment/Wish System (Google Apps Script Backend) ──
 // GANTI URL DI BAWAH INI DENGAN URL WEB APP GOOGLE APPS SCRIPT KAMU
-const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHUHAeVRCXTNKuJikdbAJH6odLDSc7RT51KyPQ1EloaJYcuT9ZS3GsO69bRfpmjOE0/exec';
 
 const wishList = document.getElementById('wishList');
 const wishLoading = document.getElementById('wishLoading');
