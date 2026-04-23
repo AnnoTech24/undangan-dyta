@@ -12,12 +12,12 @@ const bgMusic = document.getElementById('bgMusic');
 // ── Dynamic Guest Name from URL ──
 const namaTamuCover = document.getElementById('nama-tamu-cover');
 const pathSegment = decodeURIComponent(window.location.pathname.split('/').filter(Boolean).pop() || '');
-if (pathSegment) {
+if (pathSegment && !pathSegment.toLowerCase().endsWith('.html')) {
     // Replace dashes/underscores with spaces for nicer display
     const namaFormatted = pathSegment.replace(/[-_]/g, ' ');
     namaTamuCover.textContent = namaFormatted;
 } else {
-    namaTamuCover.textContent = 'Tamu Undangan';
+    namaTamuCover.textContent = 'Tamu Spesial';
 }
 
 let isMusicPlaying = false;
