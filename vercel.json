@@ -1,5 +1,13 @@
 {
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
   "rewrites": [
-    { "source": "/:name", "destination": "/index.html" }
+    { "source": "/((?!assets|css|js|song|favicon).*)", "destination": "/index.html" }
   ]
 }
